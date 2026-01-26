@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "XCancel Redirect",
+  "version": "1.0.0",
+  "description": "Redirects x.com URLs to xcancel.com",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "*://x.com/*",
+    "*://www.x.com/*"
+  ],
+  "background": {
+    "scripts": ["redirect.js", "background.js"],
+    "persistent": false
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

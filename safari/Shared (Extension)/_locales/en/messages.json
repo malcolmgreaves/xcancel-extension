@@ -1,0 +1,10 @@
+{
+  "extension_name": {
+    "message": "XCancel Redirect",
+    "description": "The name of the extension"
+  },
+  "extension_description": {
+    "message": "Redirects x.com URLs to xcancel.com",
+    "description": "The description of the extension"
+  }
+}

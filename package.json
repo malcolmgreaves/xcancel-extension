@@ -1,0 +1,23 @@
+{
+  "name": "xcancel-redirect-extension",
+  "version": "1.0.0",
+  "description": "Browser extension that redirects x.com URLs to xcancel.com",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "build:chrome": "node scripts/build.js chrome",
+    "build:firefox": "node scripts/build.js firefox",
+    "build:edge": "node scripts/build.js edge"
+  },
+  "keywords": [
+    "browser-extension",
+    "chrome-extension",
+    "firefox-extension",
+    "safari-extension",
+    "edge-extension",
+    "redirect",
+    "xcancel"
+  ],
+  "author": "",
+  "license": "MIT"
+}

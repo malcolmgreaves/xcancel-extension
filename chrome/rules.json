@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "host": "xcancel.com"
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||x.com",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "stylesheet",
+        "script",
+        "image",
+        "font",
+        "object",
+        "xmlhttprequest",
+        "ping",
+        "media",
+        "websocket",
+        "webtransport",
+        "webbundle",
+        "other"
+      ],
+      "requestDomains": ["x.com"]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "host": "www.xcancel.com"
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||www.x.com",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "stylesheet",
+        "script",
+        "image",
+        "font",
+        "object",
+        "xmlhttprequest",
+        "ping",
+        "media",
+        "websocket",
+        "webtransport",
+        "webbundle",
+        "other"
+      ],
+      "requestDomains": ["www.x.com"]
+    }
+  }
+]
