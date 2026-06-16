@@ -122,4 +122,3 @@ This module is copied to Firefox and Safari directories since they load scripts 
 ## License
 
 MIT
- 
