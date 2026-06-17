@@ -1,0 +1,13 @@
+node_modules/
+dist/
+playwright-report/
+test-results/
+
+# Generated icon artifacts (produced by scripts/generate-icons.js)
+chrome/icons/
+firefox/icons/
+edge/icons/
+safari/Shared (Extension)/icons/
+
+# Chromium runtime metadata (generated when loading extension in browser/Playwright)
+chrome/_metadata/

@@ -61,6 +61,19 @@ function createZip(sourceDir, outputPath) {
   }
 }
 
+function ensureIcons() {
+  const iconSizes = [16, 48, 128];
+  const missing = BROWSERS.some(browser =>
+    iconSizes.some(size =>
+      !fs.existsSync(path.join(ROOT_DIR, browser, 'icons', `icon${size}.png`))
+    )
+  );
+  if (missing) {
+    console.log('Icons missing — generating now...');
+    execSync(`node "${path.join(__dirname, 'generate-icons.js')}"`, { stdio: 'inherit' });
+  }
+}
+
 function buildBrowser(browser) {
   console.log(`\nBuilding ${browser} extension...`);
 
@@ -105,6 +118,9 @@ function main() {
 
   // Create dist directory
   ensureDir(DIST_DIR);
+
+  // Auto-generate icons if any are missing
+  ensureIcons();
 
   // Build each browser
   const results = {};
