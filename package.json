@@ -4,6 +4,9 @@
   "description": "Browser extension that redirects x.com URLs to xcancel.com",
   "private": true,
   "scripts": {
+    "test": "node --test",
+    "icons": "node scripts/generate-icons.js",
+    "sync": "node scripts/sync-core.js",
     "build": "node scripts/build.js",
     "build:chrome": "node scripts/build.js chrome",
     "build:firefox": "node scripts/build.js firefox",

@@ -81,8 +81,9 @@ function buildBrowser(browser) {
   // Copy all files from browser directory
   copyDir(browserDir, distBrowserDir);
 
-  // Sync core redirect.js (for browsers that need it bundled)
-  if (browser === 'firefox') {
+  // Sync core redirect.js (for browsers that load the script directly).
+  // Chrome/Edge don't need it — they redirect via rules.json.
+  if (browser === 'firefox' || browser === 'safari') {
     syncCoreToExtension(distBrowserDir);
   }
 
@@ -93,7 +94,9 @@ function buildBrowser(browser) {
   }
 
   console.log(`  Creating ${browser} package...`);
-  createZip(distBrowserDir, zipPath);
+  if (!createZip(distBrowserDir, zipPath)) {
+    return false;
+  }
 
   console.log(`  Done: dist/xcancel-redirect-${browser}.zip`);
   return true;
@@ -102,6 +105,10 @@ function buildBrowser(browser) {
 function main() {
   console.log('XCancel Redirect Extension Build');
   console.log('=================================');
+
+  // Ensure icons exist before packaging (manifests reference them).
+  console.log('\nGenerating icons...');
+  execSync('node scripts/generate-icons.js', { cwd: ROOT_DIR, stdio: 'inherit' });
 
   // Create dist directory
   ensureDir(DIST_DIR);

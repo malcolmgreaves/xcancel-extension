@@ -5,13 +5,11 @@
     "action": {
       "type": "redirect",
       "redirect": {
-        "transform": {
-          "host": "xcancel.com"
-        }
+        "regexSubstitution": "\\1\\2xcancel.com\\3"
       }
     },
     "condition": {
-      "urlFilter": "||x.com",
+      "regexFilter": "^(https?://)(www\\.)?x\\.com(/.*|$)",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -27,40 +25,7 @@
         "webtransport",
         "webbundle",
         "other"
-      ],
-      "requestDomains": ["x.com"]
-    }
-  },
-  {
-    "id": 2,
-    "priority": 1,
-    "action": {
-      "type": "redirect",
-      "redirect": {
-        "transform": {
-          "host": "www.xcancel.com"
-        }
-      }
-    },
-    "condition": {
-      "urlFilter": "||www.x.com",
-      "resourceTypes": [
-        "main_frame",
-        "sub_frame",
-        "stylesheet",
-        "script",
-        "image",
-        "font",
-        "object",
-        "xmlhttprequest",
-        "ping",
-        "media",
-        "websocket",
-        "webtransport",
-        "webbundle",
-        "other"
-      ],
-      "requestDomains": ["www.x.com"]
+      ]
     }
   }
 ]
