@@ -113,9 +113,19 @@ function main() {
   // Create dist directory
   ensureDir(DIST_DIR);
 
+  // Build the browsers named on the command line, or all of them by default.
+  const requested = process.argv.slice(2);
+  const unknown = requested.filter((b) => !BROWSERS.includes(b));
+  if (unknown.length) {
+    console.error(`Unknown browser(s): ${unknown.join(', ')}`);
+    console.error(`Valid options: ${BROWSERS.join(', ')}`);
+    process.exit(1);
+  }
+  const buildList = requested.length ? requested : BROWSERS;
+
   // Build each browser
   const results = {};
-  for (const browser of BROWSERS) {
+  for (const browser of buildList) {
     results[browser] = buildBrowser(browser);
   }
 
@@ -127,6 +137,11 @@ function main() {
   }
 
   console.log('\nNote: Safari requires Xcode to build. See safari/README.md for instructions.');
+
+  // Fail the process if any requested browser failed to build.
+  if (Object.values(results).some((success) => !success)) {
+    process.exit(1);
+  }
 }
 
 main();

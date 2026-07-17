@@ -11,7 +11,7 @@
   ],
   "background": {
     "scripts": ["redirect.js", "background.js"],
-    "persistent": false
+    "persistent": true
   },
   "icons": {
     "16": "icons/icon16.png",

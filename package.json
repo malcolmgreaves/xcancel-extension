@@ -7,6 +7,7 @@
     "test": "node --test",
     "icons": "node scripts/generate-icons.js",
     "sync": "node scripts/sync-core.js",
+    "verify": "node scripts/sync-core.js --check",
     "build": "node scripts/build.js",
     "build:chrome": "node scripts/build.js chrome",
     "build:firefox": "node scripts/build.js firefox",

@@ -39,8 +39,9 @@ function renderPixels(size) {
 
   const radius = Math.round(size * 0.18); // corner radius
   const margin = Math.round(size * 0.22); // keep the X inset from edges
-  // Stroke half-width of the X, scaled with size (min 1px).
-  const half = Math.max(1, Math.round(size * 0.085));
+  // Stroke half-width of the X, scaled with size. Floor at 2px so the glyph
+  // stays legible at 16px (where it renders in only an ~8px box).
+  const half = Math.max(2, Math.round(size * 0.09));
 
   for (let y = 0; y < size; y++) {
     for (let x = 0; x < size; x++) {
@@ -73,10 +74,17 @@ function renderPixels(size) {
   return pixels;
 }
 
-/** True if (x, y) is within the rounded-square mask. */
+/**
+ * True if (x, y) is within the rounded-square mask.
+ *
+ * dx/dy measure how far the pixel is *past* the straight edge into a rounded
+ * corner: they are 0 for any pixel in the central cross (straight edges) and
+ * negative only inside a corner box, where the value equals the signed offset
+ * from the corner's arc center. Clipping those corner pixels by circular
+ * distance (radius) rounds the four corners while leaving the rest solid.
+ */
 function insideRoundedSquare(x, y, size, radius) {
   const max = size - 1;
-  // Distance into each corner region; only corners are rounded.
   const dx = Math.min(x - radius, max - radius - x, 0);
   const dy = Math.min(y - radius, max - radius - y, 0);
   return dx * dx + dy * dy <= radius * radius;

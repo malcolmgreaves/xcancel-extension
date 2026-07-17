@@ -9,7 +9,7 @@
       }
     },
     "condition": {
-      "regexFilter": "^(https?://)(www\\.)?x\\.com(/.*|$)",
+      "regexFilter": "^(https?://)(www\\.)?x\\.com([/?#].*|$)",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
